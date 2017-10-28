@@ -5,23 +5,17 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public float movementSpeed;
+    private Vector2 previousVelocity;
 
-	void Update () {
+	void FixedUpdate () {
         Rigidbody2D playerBody = GetComponent<Rigidbody2D>();
-        Vector2 velocity = Vector2.zero;
-		if (Input.GetKey(KeyCode.D)) {
-            velocity.x = movementSpeed * Time.deltaTime;
-        } else if (Input.GetKey(KeyCode.A)) {
-            velocity.x = 0 - (movementSpeed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.W)) {
-            velocity.y = movementSpeed * Time.deltaTime;
-        } else if (Input.GetKey(KeyCode.S)) {
-            velocity.y = 0 - (movementSpeed * Time.deltaTime);
-        }
+        Vector2 velocity = InputManager.PrimaryAxis() * movementSpeed * Time.deltaTime;
         if (velocity.x != 0 && velocity.y != 0) {
             velocity.x = velocity.x * 0.7071f;
             velocity.y = velocity.y * 0.7071f;
+        }
+        if (InputManager.FaceButtonBottom()) {
+            Debug.Log(InputManager.PrimaryAxis());
         }
         playerBody.velocity = velocity;
     }
