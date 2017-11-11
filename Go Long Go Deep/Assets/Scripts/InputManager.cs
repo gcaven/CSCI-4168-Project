@@ -26,22 +26,22 @@ public static class InputManager {
 
     // Face Buttons (A,B,X,Y)
 
-    // A button on Xbox, X button on Dualshock
+    // A button on Xbox, X button on Dualshock, E on Keyboard
     public static bool FaceButtonBottom() {
         return Input.GetButtonDown("faceButtonBottom");
     }
 
-    // Y button on Xbox, Triangle button on Dualshock
+    // Y button on Xbox, Triangle button on Dualshock, Q on Keyboard
     public static bool FaceButtonTop() {
         return Input.GetButtonDown("faceButtonTop");
     }
 
-    // X button on Xbox, Square button on Dualshock
+    // X button on Xbox, Square button on Dualshock, Z on Keyboard
     public static bool FaceButtonLeft() {
         return Input.GetButtonDown("faceButtonLeft");
     }
 
-    // B button on Xbox, circle button on Dualshock
+    // B button on Xbox, circle button on Dualshock, X on Keyboard
     public static bool FaceButtonRight() {
         return Input.GetButtonDown("faceButtonRight");
     }

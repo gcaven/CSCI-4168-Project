@@ -6,19 +6,17 @@ public class FootballBehaviour : MonoBehaviour {
 
     private bool isMoving;
     private Vector2 direction;
-
+    
     public int movementSpeed;
     public float movementDistance;
     public int damage;
 
 	// Use this for initialization
-	void Start () {
+    public void Initialize(Vector2 position, Vector2 velocity) {
         isMoving = true;
-        GameObject player = PlayerStatus.getPlayer();
-        Vector2 pos = player.transform.position;
-        GetComponent<Rigidbody2D>().position = pos;
-        setDirection(player.GetComponent<Rigidbody2D>().velocity);
-	}
+        GetComponent<Rigidbody2D>().position = position;
+        setDirection(velocity);
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -44,7 +42,7 @@ public class FootballBehaviour : MonoBehaviour {
     {
         if(other.gameObject.name == "Player" && !isMoving)
         {
-            PlayerStatus.setHasFootball(true);
+            PlayerMovement.setHasFootball(true);
             Destroy(this.gameObject);
         }
         else if(other.gameObject.tag == "Wall")

@@ -7,11 +7,31 @@ public class PlayerMovement : MonoBehaviour {
     public float movementSpeed;
     public float speedBurstMultiplier;
 
+    private static Animator animator;
+    private static bool hasFootball;
     private float timeLeftOnSpeedBurst;
     private float actionCooldown;
     private Vector2 previousMovement;
 
-	void FixedUpdate () {
+    void Start() {
+        hasFootball = true;
+        animator = GetComponent<Animator>();    
+    }
+
+    public static void setHasFootball(bool val) {
+        hasFootball = val;
+        animator.SetBool("hasBall", val);
+    }
+
+    private void setAnimation(Vector2 velocity) {
+        if (velocity.x != 0 || velocity.y != 0) {
+            animator.SetBool("isWalking", true);
+        } else {
+            animator.SetBool("isWalking", false);
+        }
+    }
+
+    void FixedUpdate () {
         Rigidbody2D playerBody = GetComponent<Rigidbody2D>();
         Vector2 velocity;
         if (actionCooldown > 0) {
@@ -29,12 +49,13 @@ public class PlayerMovement : MonoBehaviour {
             previousMovement = velocity;
             if (actionCooldown <= 0) {
                 // Player is tackling / attempting to throw ball
-                if (InputManager.FaceButtonBottom() || Input.GetKeyDown(KeyCode.Q)) {
-                    if (PlayerStatus.getHasFootball())
+                if (InputManager.FaceButtonBottom()) {
+                    if (hasFootball)
                     {
-                        PlayerStatus.setHasFootball(false);
+                        setHasFootball(false);
                         // Throw the ball
                         GameObject newBall = (GameObject)Instantiate(Resources.Load("Football/Football"));
+                        newBall.GetComponent<FootballBehaviour>().Initialize(GetComponent<Rigidbody2D>().position, velocity);
                     }
                     else
                     {
@@ -47,6 +68,7 @@ public class PlayerMovement : MonoBehaviour {
                 }
             }
         }
+        setAnimation(velocity);
         playerBody.velocity = velocity;
     }
 }
