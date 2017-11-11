@@ -29,8 +29,17 @@ public class PlayerMovement : MonoBehaviour {
             previousMovement = velocity;
             if (actionCooldown <= 0) {
                 // Player is tackling / attempting to throw ball
-                if (InputManager.FaceButtonBottom()) {
-                    timeLeftOnSpeedBurst = 0.35f;
+                if (InputManager.FaceButtonBottom() || Input.GetKeyDown(KeyCode.Q)) {
+                    if (PlayerStatus.getHasFootball())
+                    {
+                        PlayerStatus.setHasFootball(false);
+                        // Throw the ball
+                        GameObject newBall = (GameObject)Instantiate(Resources.Load("Football/Football"));
+                    }
+                    else
+                    {
+                        timeLeftOnSpeedBurst = 0.35f;
+                    }
                     actionCooldown = 0.70f;
                     // Player is checking
                 } else if (InputManager.FaceButtonRight()) {
