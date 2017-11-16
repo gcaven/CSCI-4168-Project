@@ -61,7 +61,7 @@ public class FootballBehaviour : MonoBehaviour {
     {
         if(other.gameObject.name == "Player" && !isMoving)
         {
-            PlayerMovement.setHasFootball(true);
+            Player.setHasFootball(true);
             Destroy(this.gameObject);
         }
         else if(other.gameObject.tag == "Wall")

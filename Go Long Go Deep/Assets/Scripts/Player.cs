@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class Player : MonoBehaviour {
 
+	static Player instance;
     public float movementSpeed;
     public float speedBurstMultiplier;
 
@@ -15,7 +16,8 @@ public class PlayerMovement : MonoBehaviour {
 
     void Start() {
         hasFootball = true;
-        animator = GetComponent<Animator>();    
+        animator = GetComponent<Animator>(); 
+		instance = this;
     }
 
     public static void setHasFootball(bool val) {
@@ -31,6 +33,10 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+	public static Player GetPlayer() {
+		return instance;	
+	}
+	
     void FixedUpdate () {
         Rigidbody2D playerBody = GetComponent<Rigidbody2D>();
         Vector2 velocity;
