@@ -7,6 +7,7 @@ TagManager:
   - Room
   - Hallway
   - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX
