@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
 	static Player instance;
+	static GameObject currentRoom;
     public float movementSpeed;
     public float speedBurstMultiplier;
 
@@ -25,6 +26,18 @@ public class Player : MonoBehaviour {
         animator.SetBool("hasBall", val);
     }
 
+	public static Player GetPlayer() {
+		return instance;	
+	}
+
+	public static GameObject GetCurrentRoom() {
+		return currentRoom;
+	}
+
+	public static void setCurrentRoom(GameObject room) {
+		currentRoom = room;
+	}
+			
     private void setAnimation(Vector2 velocity) {
         if (velocity.x != 0 || velocity.y != 0) {
             animator.SetBool("isWalking", true);
@@ -32,11 +45,7 @@ public class Player : MonoBehaviour {
             animator.SetBool("isWalking", false);
         }
     }
-
-	public static Player GetPlayer() {
-		return instance;	
-	}
-	
+		
     void FixedUpdate () {
         Rigidbody2D playerBody = GetComponent<Rigidbody2D>();
         Vector2 velocity;

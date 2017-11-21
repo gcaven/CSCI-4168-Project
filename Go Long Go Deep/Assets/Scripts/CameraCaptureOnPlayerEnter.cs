@@ -15,6 +15,7 @@ public class CameraCaptureOnPlayerEnter : MonoBehaviour {
             Vector2 size = GetComponent<BoxCollider2D>().size;
             float maxSize = Mathf.Max(size.x/2 + 2, size.y/2 + 2);
             CameraMovement.orthoSizeTarget = maxSize;
+			Player.setCurrentRoom (gameObject);
         }
     }
 
