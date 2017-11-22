@@ -7,14 +7,16 @@ public class CameraCaptureOnPlayerEnter : MonoBehaviour {
 	private float damping = 0.5f;
 
     void Start() {
-		foreach (Renderer renderer in GetComponentsInChildren<Renderer>()) {
-			renderer.material.color = new Color(
-				renderer.material.color.r,
-				renderer.material.color.g,
-				renderer.material.color.g,
-				0.1f
-			);
-		}
+        if (gameObject.name != "Room1") {
+            foreach (Renderer renderer in GetComponentsInChildren<Renderer>()) {
+                renderer.material.color = new Color(
+                    renderer.material.color.r,
+                    renderer.material.color.g,
+                    renderer.material.color.g,
+                    0f
+                );
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -32,23 +34,31 @@ public class CameraCaptureOnPlayerEnter : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D other) {
         Debug.Log(gameObject.name + ": exit");
         if (other.tag == "Player") {
-			transitionAlpha (0.1f);
+			transitionAlpha (0f);
+        }
+    }
+    
+	private void transitionAlpha(float targetAlpha) {
+		foreach (Renderer renderer in gameObject.GetComponentsInChildren<Renderer>()) {
+            StartCoroutine(FadeAlpha(renderer, targetAlpha, 0.5f));
+		}
+	}
+
+    // https://answers.unity.com/answers/225880/view.html
+    IEnumerator FadeAlpha(Renderer renderer, float targetAlpha, float fadeTime) {
+        float alpha = renderer.material.color.a;
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / fadeTime) {
+            Color fadedColor = new Color(1, 1, 1, Mathf.Lerp(alpha, targetAlpha, ParametricBlend(t)));
+            renderer.material.color = fadedColor;
+            yield return null;
         }
     }
 
-	private void transitionAlpha(float targetAlpha) {
-		foreach (Renderer renderer in gameObject.GetComponentsInChildren<Renderer>()) {
-			Material currentMaterial = renderer.material;
-			Material targetMaterial = renderer.material;
-			targetMaterial.color = new Color(
-				currentMaterial.color.r, 
-				currentMaterial.color.g,
-				currentMaterial.color.b,
-				targetAlpha
-			);
-			renderer.material.Lerp(currentMaterial, targetMaterial, Time.deltaTime * damping);
-		}
-	}
+    // https://stackoverflow.com/a/25730573
+    float ParametricBlend(float time) {
+        float square = time*time;
+        return square / (2.0f * (square - time) + 1.0f);
+    }
 }
     
     
