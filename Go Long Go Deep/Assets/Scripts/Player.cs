@@ -39,7 +39,7 @@ public class Player : MonoBehaviour {
 	}
 			
     private void setAnimation(Vector2 velocity) {
-        if (velocity.x != 0 || velocity.y != 0) {
+        if (velocity.x != 0f || velocity.y != 0f) {
             animator.SetBool("isWalking", true);
         } else {
             animator.SetBool("isWalking", false);
