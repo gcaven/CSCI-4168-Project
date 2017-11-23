@@ -44,7 +44,18 @@ public class Player : MonoBehaviour {
         } else {
             animator.SetBool("isWalking", false);
         }
+		if (velocity.x > 0 && transform.localScale.x < 0) {
+			flipX();
+		} else if (velocity.x < 0 && transform.localScale.x > 0) {
+			flipX();
+		}
     }
+
+	private void flipX() {
+		Vector3 scale = transform.localScale;
+		scale.x *= -1;
+		transform.localScale = scale;
+	}
 		
     void FixedUpdate () {
         Rigidbody2D playerBody = GetComponent<Rigidbody2D>();

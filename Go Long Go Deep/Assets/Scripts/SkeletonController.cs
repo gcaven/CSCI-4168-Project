@@ -34,7 +34,7 @@ public class SkeletonController : MonoBehaviour {
 		} else {
 			animator.SetBool("isWalking", false);
 		}
-		if (velocity.x >= 0 && transform.localScale.x < 0) {
+		if (velocity.x > 0 && transform.localScale.x < 0) {
 			flipX();
 		} else if (velocity.x < 0 && transform.localScale.x > 0) {
 			flipX();
