@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6e0a0aaba14c2440297132f7e0ad15ff
-timeCreated: 1511465765
+timeCreated: 1511563230
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,17 +11,17 @@ TextureImporter:
     21300008: Skeleton Dead_4
     21300010: Skeleton Dead_5
     21300012: Skeleton Dead_6
-    21300014: Skeleton Dead_8
+    21300014: Skeleton Dead_7
     21300016: Skeleton Dead_9
-    21300018: Skeleton Dead_11
-    21300020: Skeleton Dead_12
-    21300022: Skeleton Dead_13
-    21300024: Skeleton Dead_16
-    21300026: Skeleton Dead_17
-    21300028: Skeleton Dead_18
+    21300018: Skeleton Dead_9
+    21300020: Skeleton Dead_10
+    21300022: Skeleton Dead_11
+    21300024: Skeleton Dead_12
+    21300026: Skeleton Dead_13
+    21300028: Skeleton Dead_14
     21300030: Skeleton Dead_7
     21300032: Skeleton Dead_10
-    21300034: Skeleton Dead_14
+    21300034: Skeleton Dead_8
     21300036: Skeleton Dead_15
   externalObjects: {}
   serializedVersion: 4
@@ -195,7 +195,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Skeleton Dead_8
+      name: Skeleton Dead_7
       rect:
         serializedVersion: 2
         x: 236
@@ -209,7 +209,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Skeleton Dead_11
+      name: Skeleton Dead_9
       rect:
         serializedVersion: 2
         x: 301
@@ -223,7 +223,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Skeleton Dead_12
+      name: Skeleton Dead_10
       rect:
         serializedVersion: 2
         x: 334
@@ -237,7 +237,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Skeleton Dead_13
+      name: Skeleton Dead_11
       rect:
         serializedVersion: 2
         x: 367
@@ -251,7 +251,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Skeleton Dead_14
+      name: Skeleton Dead_8
       rect:
         serializedVersion: 2
         x: 269
@@ -265,7 +265,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Skeleton Dead_16
+      name: Skeleton Dead_12
       rect:
         serializedVersion: 2
         x: 396
@@ -279,7 +279,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Skeleton Dead_17
+      name: Skeleton Dead_13
       rect:
         serializedVersion: 2
         x: 429
@@ -293,7 +293,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Skeleton Dead_18
+      name: Skeleton Dead_14
       rect:
         serializedVersion: 2
         x: 462

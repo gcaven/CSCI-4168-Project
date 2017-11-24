@@ -1578,6 +1578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 100
+  attackMovementCooldown: 1
 --- !u!61 &1876835274
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2054,7 +2055,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 250
-  speedBurstMultiplier: 2.5
 --- !u!50 &2101070962
 Rigidbody2D:
   serializedVersion: 4
