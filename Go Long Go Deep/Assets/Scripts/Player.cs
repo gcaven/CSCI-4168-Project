@@ -7,18 +7,37 @@ public class Player : MonoBehaviour {
 	static Player instance;
 	static GameObject currentRoom;
     public float movementSpeed;
-    public float speedBurstMultiplier;
-
     private static Animator animator;
     private static bool hasFootball;
     private float timeLeftOnSpeedBurst;
     private float actionCooldown;
     private Vector2 previousMovement;
 
+	// Stats modifiable by items
+	private float speedMulitplier;
+	private int totalHP;
+	private int currentHP;
+	private int footballSpeedMultiplier;
+	private int footballDistanceMultiplier;
+	private int footballDamageMultiplier;
+	private int footballAutoReturn;
+	private int checkDamageMultiplier;
+	private int speedBurstMultiplier;
+
+
     void Start() {
         hasFootball = true;
         animator = GetComponent<Animator>(); 
 		instance = this;
+
+		speedMulitplier = 1;
+		totalHP = 5;
+		currentHP = 5;
+		footballSpeedMultiplier = 1;
+		footballDamageMultiplier = 1;
+		checkDamageMultiplier = 1;
+		speedBurstMultiplier = 1;
+		footballAutoReturn = false;
     }
 
     public static void setHasFootball(bool val) {
