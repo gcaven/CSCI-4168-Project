@@ -20,7 +20,7 @@ public class Player : MonoBehaviour {
 	private int footballSpeedMultiplier;
 	private int footballDistanceMultiplier;
 	private int footballDamageMultiplier;
-	private int footballAutoReturn;
+	private bool footballAutoReturn;
 	private int checkDamageMultiplier;
 	private int speedBurstMultiplier;
 
