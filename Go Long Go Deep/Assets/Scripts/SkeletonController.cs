@@ -27,13 +27,13 @@ public class SkeletonController : MonoBehaviour {
 		}
 		if (gameObject.transform.parent.gameObject == Player.GetCurrentRoom ()) {
 			if (attackMovementTimeout <= 0f) {
-				moveToTargetPosition (player.transform.position);
+				moveToTargetPosition (player.transform.position, true);
 			} else {
 				attackMovementTimeout -= Time.deltaTime;
 				skeleBody.velocity = Vector2.zero;
 			}
 		} else {
-			moveToTargetPosition(initialPos);
+			moveToTargetPosition(initialPos, false);
 		}
 	}
 
@@ -57,16 +57,17 @@ public class SkeletonController : MonoBehaviour {
 		transform.localScale = scale;
 	}
 
-	void moveToTargetPosition(Vector2 targetPos) {
+	void moveToTargetPosition(Vector2 targetPos, bool attackTarget) {
 		Vector2 positionDiff = new Vector2 (
 			(float)System.Math.Round(transform.position.x - targetPos.x,1),
 			(float)System.Math.Round(transform.position.y - targetPos.y,1)
 		);
-		if (Mathf.Abs(positionDiff.x) <= 1.2f && Mathf.Abs(positionDiff.y) <= 1.2f) {
-			Debug.Log ("attack: " + positionDiff);
-			attackPlayer ();
-			skeleBody.velocity = Vector2.zero;
-			return;
+		if (attackTarget == true 
+			&& Mathf.Abs(positionDiff.x) <= 1.1f
+			&& Mathf.Abs(positionDiff.y) <= 1.1f) {
+				attackPlayer ();
+				skeleBody.velocity = Vector2.zero;
+				return;
 		}
 		Vector2 velocity = new Vector2 (
 			Mathf.Clamp (0 - positionDiff.x, -1f, 1f) * movementSpeed * Time.deltaTime,
@@ -77,8 +78,8 @@ public class SkeletonController : MonoBehaviour {
 	}
 
 	void attackPlayer() {
-		animator.SetTrigger("isAttacking");
 		animator.SetBool("isWalking", false);
+		animator.SetTrigger("isAttacking");
 		attackMovementTimeout = attackMovementCooldown;
 	}
 }
