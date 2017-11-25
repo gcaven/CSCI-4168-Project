@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 321595199}
   m_Layer: 0
   m_Name: RightWallTop
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1437,12 +1437,12 @@ GameObject:
   - component: {fileID: 1876835271}
   - component: {fileID: 1876835270}
   - component: {fileID: 1876835269}
-  - component: {fileID: 1876835274}
+  - component: {fileID: 1876835275}
   - component: {fileID: 1876835268}
   - component: {fileID: 1876835273}
   m_Layer: 0
   m_Name: Skeleton
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1476,7 +1476,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0014926046, y: 0.15748836}
+  m_Offset: {x: 0, y: 0.16}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -1487,7 +1487,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2210637, y: 0.319469}
+  m_Size: {x: 0.22, y: 0.32}
   m_EdgeRadius: 0
 --- !u!50 &1876835270
 Rigidbody2D:
@@ -1578,8 +1578,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 100
-  attackMovementCooldown: 1
---- !u!61 &1876835274
+  actionCooldown: 1
+  hitCooldown: 0.5
+--- !u!61 &1876835275
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -1591,7 +1592,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.000443656, y: 0.15796216}
+  m_Offset: {x: 0, y: 0.16}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -1602,7 +1603,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.22149998, y: 0.32081428}
+  m_Size: {x: 0.22, y: 0.32}
   m_EdgeRadius: 0
 --- !u!1 &1893296824
 GameObject:
@@ -1780,7 +1781,7 @@ GameObject:
   - component: {fileID: 2078854875}
   m_Layer: 0
   m_Name: RightWallBottom
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -41,50 +41,39 @@ public class FootballBehaviour : MonoBehaviour {
 	void FixedUpdate () {
         Rigidbody2D footballBody = GetComponent<Rigidbody2D>();
 
-        if (isMoving)
-        {
+        if (isMoving) {
             Vector2 movementVector = direction * movementSpeed;
             footballBody.velocity = movementVector;
             movementDistance -= Time.deltaTime;
-            if(movementDistance <= 0f)
-            {
+            if(movementDistance <= 0f) {
                 isMoving = false;
             }
         }
-        else
-        {
+        else {
             footballBody.velocity = Vector2.zero;
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.gameObject.name == "Player" && !isMoving)
-        {
+    void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.name == "Player" && !isMoving) {
             Player.setHasFootball(true);
             Destroy(this.gameObject);
         }
-        else if(other.gameObject.tag == "Wall")
-        {
-            print("YOOOOO");
+		else if(other.gameObject.tag == "Wall" || other.gameObject.tag == "Enemy") {
             isMoving = false;
         }
-        else
-        {
+        else {
             print(SortingLayer.IDToName(other.gameObject.layer));
         }
     }
 
-    void setDirection(Vector2 source)
-    {
+    void setDirection(Vector2 source) {
         // If the player isn't moving
-        if (source == Vector2.zero)
-        {
+        if (source == Vector2.zero) {
             // Pick an arbitrary direction
             direction = Vector2.right;
         }
-        else
-        {
+        else {
             direction = Vector2.zero;
             // Let's do some Pythagorus :)
             float hyp = Mathf.Sqrt((source.x * source.x) + (source.y * source.y));

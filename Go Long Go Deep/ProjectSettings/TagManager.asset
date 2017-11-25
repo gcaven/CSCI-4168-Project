@@ -8,6 +8,7 @@ TagManager:
   - Hallway
   - Wall
   - Enemy
+  - Football
   layers:
   - Default
   - TransparentFX

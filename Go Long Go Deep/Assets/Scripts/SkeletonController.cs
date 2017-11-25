@@ -9,27 +9,37 @@ public class SkeletonController : MonoBehaviour {
 	private static Animator animator;
 	private static Rigidbody2D skeleBody;
 	public float movementSpeed = 100;
-	public float attackMovementCooldown = 1.0f;
-	private float attackMovementTimeout;
+	public float actionCooldown = 1.0f;
+	public float hitCooldown = 0.5f;
+	private float hitPoints;
+	private float actionTimeout;
+	private bool gettingHit;
 
 	// Use this for initialization
 	void Start () {
 		initialPos = transform.position;
 		animator = GetComponent<Animator>(); 
 		skeleBody = GetComponent<Rigidbody2D> ();
-		attackMovementTimeout = 0f;
+		hitPoints = 2;
+		actionTimeout = 0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (hitPoints <= 0) {
+			return;
+		}
 		if (player == null) {
 			player = Player.GetPlayer ();
 		}
 		if (gameObject.transform.parent.gameObject == Player.GetCurrentRoom ()) {
-			if (attackMovementTimeout <= 0f) {
+			if (actionTimeout <= 0f) {
+				if (gettingHit) {
+					gettingHit = false;
+				}
 				moveToTargetPosition (player.transform.position, true);
 			} else {
-				attackMovementTimeout -= Time.deltaTime;
+				actionTimeout -= Time.deltaTime;
 				skeleBody.velocity = Vector2.zero;
 			}
 		} else {
@@ -37,7 +47,15 @@ public class SkeletonController : MonoBehaviour {
 		}
 	}
 
-
+	// if the skeleton is hit by a moving football
+	void OnTriggerEnter2D(Collider2D other) {
+		if (!gettingHit 
+			&& other.gameObject.tag == "Football" 
+			&& other.gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero) {
+			registerHit ();
+		}
+	}
+		
 	private void setAnimation(Vector2 velocity) {
 		if (velocity.x != 0f || velocity.y != 0f) {
 			animator.SetBool("isWalking", true);
@@ -80,6 +98,23 @@ public class SkeletonController : MonoBehaviour {
 	void attackPlayer() {
 		animator.SetBool("isWalking", false);
 		animator.SetTrigger("isAttacking");
-		attackMovementTimeout = attackMovementCooldown;
+		actionTimeout = actionCooldown;
+	}
+
+	void registerHit() {
+		gettingHit = true;
+		Debug.Log ("Hit " + Time.fixedTime);
+		skeleBody.velocity = Vector2.zero;
+		hitPoints -= 1;
+		if (hitPoints <= 0) {
+			animator.SetTrigger ("isDying");
+			skeleBody.isKinematic = true;
+			GetComponent<BoxCollider2D> ().enabled = false;
+			GetComponent<SpriteRenderer>().sortingLayerName = "Floor";
+		} else {
+			animator.SetTrigger ("beingHit");
+			animator.SetBool("isWalking", false);
+			actionTimeout = hitCooldown;
+		}
 	}
 }
