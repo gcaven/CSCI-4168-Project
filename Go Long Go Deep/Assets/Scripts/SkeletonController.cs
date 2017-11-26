@@ -6,7 +6,9 @@ public class SkeletonController : MonoBehaviour {
 
 	private Player player;
 	private Vector2 initialPos;
+	private Vector2 previousDirection;
 	private static Animator animator;
+	private static SpriteRenderer renderer;
 	private static Rigidbody2D skeleBody;
 	public float movementSpeed = 100;
 	public float actionCooldown = 1.0f;
@@ -14,12 +16,14 @@ public class SkeletonController : MonoBehaviour {
 	private float hitPoints;
 	private float actionTimeout;
 	private bool gettingHit;
+	private bool isAttacking;
 
 	// Use this for initialization
 	void Start () {
 		initialPos = transform.position;
 		animator = GetComponent<Animator>(); 
-		skeleBody = GetComponent<Rigidbody2D> ();
+		renderer = GetComponent<SpriteRenderer>();
+		skeleBody = GetComponent<Rigidbody2D>();
 		hitPoints = 2;
 		actionTimeout = 0f;
 	}
@@ -39,6 +43,21 @@ public class SkeletonController : MonoBehaviour {
 				}
 				moveToTargetPosition (player.transform.position, true);
 			} else {
+				if (!gettingHit
+				    && isAttacking
+				    && actionTimeout <= 0.25f
+				) {
+					isAttacking = false;
+					RaycastHit2D hit = Physics2D.Raycast (
+						                   new Vector2 (transform.position.x, transform.position.y + renderer.bounds.size.y / 2), 
+						                   previousDirection, 
+						                   1f, 
+						                   1 << 9);
+					if (hit.collider != null) {
+						Debug.Log ("SKELLY HIT PLAYER");
+						hit.collider.gameObject.GetComponent<Player> ().takeDamage (1);
+					}
+				}
 				actionTimeout -= Time.deltaTime;
 				skeleBody.velocity = Vector2.zero;
 			}
@@ -51,7 +70,8 @@ public class SkeletonController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if (!gettingHit 
 			&& other.gameObject.tag == "Football" 
-			&& other.gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero) {
+			&& other.gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero
+		) {
 			registerHit ();
 		}
 	}
@@ -92,12 +112,14 @@ public class SkeletonController : MonoBehaviour {
 			Mathf.Clamp (0 - positionDiff.y, -1f, 1f) * movementSpeed * Time.deltaTime
 		);
 		setAnimation (velocity);
+		previousDirection = velocity;
 		skeleBody.velocity = velocity;
 	}
 
 	void attackPlayer() {
 		animator.SetBool("isWalking", false);
 		animator.SetTrigger("isAttacking");
+		isAttacking = true;
 		actionTimeout = actionCooldown;
 	}
 

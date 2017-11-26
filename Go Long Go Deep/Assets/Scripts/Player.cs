@@ -29,7 +29,6 @@ public class Player : MonoBehaviour {
         hasFootball = true;
         animator = GetComponent<Animator>(); 
 		instance = this;
-
 		speedMulitplier = 1;
 		totalHP = 5;
 		currentHP = 5;
@@ -55,6 +54,11 @@ public class Player : MonoBehaviour {
 
 	public static void setCurrentRoom(GameObject room) {
 		currentRoom = room;
+	}
+
+	public void takeDamage(int damage) {
+		Debug.Log ("taking damage! " + Time.fixedTime);
+		currentHP -= damage;
 	}
 			
     private void setAnimation(Vector2 velocity) {
