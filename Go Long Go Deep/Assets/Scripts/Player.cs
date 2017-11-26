@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
 	static Player instance;
 	static GameObject currentRoom;
     public float movementSpeed;
+	public Text healthText;
+	public GameObject gameOverScreen;
     private static Animator animator;
     private static bool hasFootball;
     private float timeLeftOnSpeedBurst;
@@ -37,6 +40,8 @@ public class Player : MonoBehaviour {
 		checkDamageMultiplier = 1;
 		speedBurstMultiplier = 1;
 		footballAutoReturn = false;
+		healthText.text = currentHP + "/" + totalHP + " <3";
+		gameOverScreen.SetActive(false);
     }
 
     public static void setHasFootball(bool val) {
@@ -58,7 +63,17 @@ public class Player : MonoBehaviour {
 
 	public void takeDamage(int damage) {
 		Debug.Log ("taking damage! " + Time.fixedTime);
+		animator.SetTrigger ("beingHit");
 		currentHP -= damage;
+		setHealthUI ();
+	}
+
+	private void setHealthUI() {
+		healthText.text = currentHP + "/5 <3";
+		if (currentHP <= 0) {
+			gameOverScreen.SetActive(true);
+			Time.timeScale = 0;
+		} 
 	}
 			
     private void setAnimation(Vector2 velocity) {

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 96883ce9a5f66fc468d482daccd47961
-timeCreated: 1511479421
+timeCreated: 1511722436
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,6 +11,8 @@ TextureImporter:
     21300008: bucky sprite sheet_4
     21300010: bucky sprite sheet_5
     21300012: bucky sprite sheet_6
+    21300014: bucky sprite sheet_7
+    21300016: bucky sprite sheet_9
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -88,10 +90,10 @@ TextureImporter:
       name: bucky sprite sheet_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 386
-        width: 80
-        height: 126
+        x: 0
+        y: 193
+        width: 47
+        height: 63
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -102,10 +104,10 @@ TextureImporter:
       name: bucky sprite sheet_1
       rect:
         serializedVersion: 2
-        x: 116
-        y: 386
-        width: 80
-        height: 126
+        x: 58
+        y: 193
+        width: 42
+        height: 63
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -116,10 +118,10 @@ TextureImporter:
       name: bucky sprite sheet_2
       rect:
         serializedVersion: 2
-        x: 216
-        y: 386
-        width: 80
-        height: 126
+        x: 108
+        y: 193
+        width: 42
+        height: 63
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,10 +132,10 @@ TextureImporter:
       name: bucky sprite sheet_3
       rect:
         serializedVersion: 2
-        x: 314
-        y: 386
-        width: 88
-        height: 126
+        x: 157
+        y: 193
+        width: 48
+        height: 63
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,10 +146,10 @@ TextureImporter:
       name: bucky sprite sheet_4
       rect:
         serializedVersion: 2
-        x: 416
-        y: 386
-        width: 86
-        height: 126
+        x: 208
+        y: 193
+        width: 44
+        height: 63
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,10 +160,10 @@ TextureImporter:
       name: bucky sprite sheet_5
       rect:
         serializedVersion: 2
-        x: 10
-        y: 256
-        width: 88
-        height: 126
+        x: 5
+        y: 128
+        width: 44
+        height: 63
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,12 +174,40 @@ TextureImporter:
       name: bucky sprite sheet_6
       rect:
         serializedVersion: 2
-        x: 234
-        y: 298
-        width: 42
-        height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 6
+        y: 63
+        width: 44
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bucky sprite sheet_7
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 63
+        width: 40
+        height: 63
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bucky sprite sheet_9
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 149
+        width: 21
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
