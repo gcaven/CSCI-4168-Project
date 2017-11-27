@@ -1,21 +1,22 @@
 fileFormatVersion: 2
-guid: 3a629feef062045e8870437cde2b9ccc
-timeCreated: 1511730409
+guid: ab4a16bfa491d4f4c9c8a554ab44dd46
+timeCreated: 1511738128
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: cave-tileset_0
-    21300002: cave-tileset_1
-    21300004: cave-tileset_2
-    21300006: cave-tileset_3
-    21300008: cave-tileset_4
-    21300010: cave-tileset_5
-    21300012: cave-tileset_6
-    21300014: cave-tileset_7
-    21300016: cave-tileset_8
-    21300018: cave-tileset_9
-    21300020: cave-tileset_10
-    21300022: cave-tileset_11
+    21300000: cave tileset_0
+    21300002: cave tileset_1
+    21300004: cave tileset_2
+    21300006: cave tileset_3
+    21300008: cave tileset_4
+    21300010: cave tileset_5
+    21300012: cave tileset_6
+    21300014: cave tileset_7
+    21300016: cave tileset_8
+    21300018: cave tileset_9
+    21300020: cave tileset_10
+    21300022: cave tileset_11
+    21300024: cave tileset_12
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -54,10 +55,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 192, z: 192, w: 0}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -90,7 +91,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cave-tileset_0
+      name: cave tileset_0
       rect:
         serializedVersion: 2
         x: 0
@@ -104,7 +105,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cave-tileset_1
+      name: cave tileset_1
       rect:
         serializedVersion: 2
         x: 64
@@ -118,7 +119,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cave-tileset_2
+      name: cave tileset_2
       rect:
         serializedVersion: 2
         x: 128
@@ -132,7 +133,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cave-tileset_3
+      name: cave tileset_3
       rect:
         serializedVersion: 2
         x: 192
@@ -146,7 +147,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cave-tileset_4
+      name: cave tileset_4
       rect:
         serializedVersion: 2
         x: 0
@@ -160,7 +161,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cave-tileset_5
+      name: cave tileset_5
       rect:
         serializedVersion: 2
         x: 64
@@ -174,7 +175,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cave-tileset_6
+      name: cave tileset_6
       rect:
         serializedVersion: 2
         x: 128
@@ -188,7 +189,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cave-tileset_7
+      name: cave tileset_7
       rect:
         serializedVersion: 2
         x: 192
@@ -202,7 +203,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cave-tileset_8
+      name: cave tileset_8
       rect:
         serializedVersion: 2
         x: 0
@@ -216,7 +217,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cave-tileset_9
+      name: cave tileset_9
       rect:
         serializedVersion: 2
         x: 64
@@ -230,7 +231,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cave-tileset_10
+      name: cave tileset_10
       rect:
         serializedVersion: 2
         x: 128
@@ -244,7 +245,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cave-tileset_11
+      name: cave tileset_11
       rect:
         serializedVersion: 2
         x: 192
@@ -257,16 +258,22 @@ TextureImporter:
       outline: []
       physicsShape: []
       tessellationDetail: 0
-    outline:
-    - - {x: -128, y: 128}
-      - {x: -128, y: -66}
-      - {x: 128, y: -66}
-      - {x: 128, y: 128}
-    physicsShape:
-    - - {x: -128, y: 128}
-      - {x: -128, y: -66}
-      - {x: 128, y: -66}
-      - {x: 128, y: 128}
+    - serializedVersion: 2
+      name: cave tileset_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
