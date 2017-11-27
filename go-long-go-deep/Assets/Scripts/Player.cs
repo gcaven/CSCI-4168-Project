@@ -25,7 +25,7 @@ public class Player : MonoBehaviour {
 	private int footballDamageMultiplier;
 	private bool footballAutoReturn;
 	private int checkDamageMultiplier;
-	private int speedBurstMultiplier;
+	private float speedBurstMultiplier;
 
 
     void Start() {
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour {
 		footballSpeedMultiplier = 1;
 		footballDamageMultiplier = 1;
 		checkDamageMultiplier = 1;
-		speedBurstMultiplier = 1;
+		speedBurstMultiplier = 2f;
 		footballAutoReturn = false;
 		healthText.text = currentHP + "/" + totalHP + " <3";
 		gameOverScreen.SetActive(false);
