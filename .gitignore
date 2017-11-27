@@ -1,9 +1,9 @@
-Go\ Long\ Go\ Deep/[Ll]ibrary/
-Go\ Long\ Go\ Deep/[Tt]emp/
-Go\ Long\ Go\ Deep/[Oo]bj/
-Go\ Long\ Go\ Deep/[Bb]uild/
-Go\ Long\ Go\ Deep/[Bb]uilds/
-Go\ Long\ Go\ Deep/Assets/AssetStoreTools*
+go-long-go-deep/[Ll]ibrary/
+go-long-go-deep/[Tt]emp/
+go-long-go-deep/[Oo]bj/
+go-long-go-deep/[Bb]uild/
+go-long-go-deep/[Bb]uilds/
+go-long-go-deep/Assets/AssetStoreTools*
 
 # Visual Studio 2015 cache directory
 /.vs/
