@@ -7,9 +7,9 @@ public class SkeletonController : MonoBehaviour {
 	private Player player;
 	private Vector2 initialPos;
 	private Vector2 previousDirection;
-	private static Animator animator;
-	private static SpriteRenderer renderer;
-	private static Rigidbody2D skeleBody;
+	private Animator animator;
+	private SpriteRenderer renderer;
+	private Rigidbody2D skeleBody;
 	public float movementSpeed = 100;
 	public float actionCooldown = 1.0f;
 	public float hitCooldown = 0.5f;
@@ -26,6 +26,8 @@ public class SkeletonController : MonoBehaviour {
 		skeleBody = GetComponent<Rigidbody2D>();
 		hitPoints = 2;
 		actionTimeout = 0f;
+		gettingHit = false;
+		isAttacking = false;
 	}
 	
 	// Update is called once per frame
@@ -100,6 +102,9 @@ public class SkeletonController : MonoBehaviour {
 			(float)System.Math.Round(transform.position.x - targetPos.x,1),
 			(float)System.Math.Round(transform.position.y - targetPos.y,1)
 		);
+		if (attackTarget) {
+			Debug.Log (positionDiff);
+		}
 		if (attackTarget == true 
 			&& Mathf.Abs(positionDiff.x) <= 1.1f
 			&& Mathf.Abs(positionDiff.y) <= 1.1f) {
