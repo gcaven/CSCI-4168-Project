@@ -8,7 +8,7 @@ public class SkeletonController : MonoBehaviour {
 	private Vector2 initialPos;
 	private Vector2 previousDirection;
 	private Animator animator;
-	private SpriteRenderer renderer;
+	private SpriteRenderer skeleRenderer;
 	private Rigidbody2D skeleBody;
 	public float movementSpeed = 100;
 	public float actionCooldown = 1.0f;
@@ -22,7 +22,7 @@ public class SkeletonController : MonoBehaviour {
 	void Start () {
 		initialPos = transform.position;
 		animator = GetComponent<Animator>(); 
-		renderer = GetComponent<SpriteRenderer>();
+		skeleRenderer = GetComponent<SpriteRenderer>();
 		skeleBody = GetComponent<Rigidbody2D>();
 		hitPoints = 2;
 		actionTimeout = 0f;
@@ -51,7 +51,7 @@ public class SkeletonController : MonoBehaviour {
 				) {
 					isAttacking = false;
 					RaycastHit2D hit = Physics2D.Raycast (
-						                   new Vector2 (transform.position.x, transform.position.y + renderer.bounds.size.y / 2), 
+						                   new Vector2 (transform.position.x, transform.position.y + skeleRenderer.bounds.size.y / 2), 
 						                   previousDirection, 
 						                   1f, 
 						                   1 << 9);
