@@ -2,10 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * This script manages input from Keyboard & Gamepad,
+ * allowing players to switch seamlessly between the two
+ * and allowing scripts to reference a single function to determine
+ * if a certain button as been pressed, rather than duplicate
+ * conditionals checking both separately. To change the mappings
+ * go to Edit -> Project Settings -> Input, but be sure to
+ * change the comments in here to be consistant.
+ */ 
+
 public static class InputManager {
 
     // Primary Axis -- Left Joystick/WASD
-
     public static float PrimaryAxisHorizontal() {
         float axisValue = 0.0f;
         axisValue += Input.GetAxis("LeftJoystick_Horizontal");
