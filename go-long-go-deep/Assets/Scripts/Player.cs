@@ -9,8 +9,9 @@ using UnityEngine.UI;
  */
 
 public class Player : MonoBehaviour {
-	// private state and static vars
-	// can use static references since there is only one player
+    // private state and static vars
+    // can use static references since there is only one player
+    private string equippedFootball;
 	static Player instance;
 	static GameObject currentRoom;
 	private static Animator animator;
@@ -46,6 +47,7 @@ public class Player : MonoBehaviour {
 	 */ 
     void Start() {
         hasFootball = true;
+        equippedFootball = "Football";
         animator = GetComponent<Animator>(); 
 		playerBody = GetComponent<Rigidbody2D>();
 		instance = this;
@@ -59,6 +61,11 @@ public class Player : MonoBehaviour {
 //		footballAutoReturn = false;
 		healthText.text = currentHP + "/" + totalHP + " <3";
 		gameOverScreen.SetActive(false);
+    }
+
+    public void SetEquippedFootball(string fball)
+    {
+        equippedFootball = fball;
     }
 
 	/* A static function that allows other scripts to modify football
@@ -144,7 +151,7 @@ public class Player : MonoBehaviour {
                     {
                         setHasFootball(false);
                         // Throw the ball, instantiate football prefab and pass it the position and direction of the player
-                        GameObject newBall = (GameObject)Instantiate(Resources.Load("Football/Football"));
+                        GameObject newBall = (GameObject)Instantiate(Resources.Load("Football/" + equippedFootball));
                         newBall.GetComponent<FootballBehaviour>().Initialize(GetComponent<Rigidbody2D>().position, velocity);
                     }
                     else
