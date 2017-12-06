@@ -189,7 +189,7 @@ public class SkeletonController : MonoBehaviour {
 	 * else, play the taking damange animation and start a cooldown
 	 * to delay any further actions.
 	 */
-	void registerHit(int damage) {
+	void registerHit(float damage) {
 		gettingHit = true;
 //		Debug.Log ("Hit " + Time.fixedTime);
 		skeleBody.velocity = Vector2.zero;

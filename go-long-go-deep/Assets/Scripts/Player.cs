@@ -26,6 +26,7 @@ public class Player : MonoBehaviour {
 	// by this script.
 	public Text healthText;
 	public GameObject gameOverScreen;
+    public GameObject shopScreen;
 
 	// Stats modifiable by items
 //	private float speedMulitplier;
@@ -60,7 +61,8 @@ public class Player : MonoBehaviour {
 		speedBurstMultiplier = 2f;
 //		footballAutoReturn = false;
 		healthText.text = currentHP + "/" + totalHP + " <3";
-		gameOverScreen.SetActive(false);
+        gameOverScreen.SetActive(false);
+        shopScreen.SetActive(false);
     }
 
     public void SetEquippedFootball(string fball)
@@ -90,6 +92,10 @@ public class Player : MonoBehaviour {
 	public static GameObject GetCurrentRoom() {
 		return currentRoom;
 	}
+
+    public GameObject GetShopScreen(){
+        return shopScreen;
+    }
 
 	/*
 	 * Allows any script to change the current room (Camera script)
@@ -167,6 +173,9 @@ public class Player : MonoBehaviour {
         }
         setAnimation(velocity);
         playerBody.velocity = velocity;
+        if (InputManager.FaceButtonTop()){
+            shopScreen.SetActive(true);
+        }
     }
 
 	/*

@@ -9,7 +9,7 @@ public class FootballBehaviour : MonoBehaviour {
     // Public vars for ball behaviour
     public int movementSpeed;
     public float movementDistance;
-    public int damage;
+    public float damage;
 
 	/*
 	 * We use this to initialize the ball with some parameters to define initial position and direction
