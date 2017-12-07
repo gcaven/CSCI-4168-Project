@@ -9,8 +9,9 @@ using UnityEngine.UI;
  */
 
 public class Player : MonoBehaviour {
-	// private state and static vars
-	// can use static references since there is only one player
+    // private state and static vars
+    // can use static references since there is only one player
+    private string equippedFootball;
 	static Player instance;
 	static GameObject currentRoom;
 	private static Animator animator;
@@ -19,12 +20,15 @@ public class Player : MonoBehaviour {
 	private float timeLeftOnSpeedBurst;
 	private float actionCooldown;
 	private Vector2 previousMovement;
+    public int gold;
 	// public vars for behaviour
     public float movementSpeed;
 	// public references to interface componenets modified
 	// by this script.
 	public Text healthText;
+    public Text goldText;
 	public GameObject gameOverScreen;
+    public GameObject shopScreen;
 
 	// Stats modifiable by items
 //	private float speedMulitplier;
@@ -46,6 +50,7 @@ public class Player : MonoBehaviour {
 	 */ 
     void Start() {
         hasFootball = true;
+        equippedFootball = "Football";
         animator = GetComponent<Animator>(); 
 		playerBody = GetComponent<Rigidbody2D>();
 		instance = this;
@@ -58,7 +63,14 @@ public class Player : MonoBehaviour {
 		speedBurstMultiplier = 2f;
 //		footballAutoReturn = false;
 		healthText.text = currentHP + "/" + totalHP + " <3";
-		gameOverScreen.SetActive(false);
+        goldText.text = System.Convert.ToString(gold);
+        gameOverScreen.SetActive(false);
+        shopScreen.SetActive(false);
+    }
+
+    public void SetEquippedFootball(string fball)
+    {
+        equippedFootball = fball;
     }
 
 	/* A static function that allows other scripts to modify football
@@ -83,6 +95,10 @@ public class Player : MonoBehaviour {
 	public static GameObject GetCurrentRoom() {
 		return currentRoom;
 	}
+
+    public GameObject GetShopScreen(){
+        return shopScreen;
+    }
 
 	/*
 	 * Allows any script to change the current room (Camera script)
@@ -144,7 +160,7 @@ public class Player : MonoBehaviour {
                     {
                         setHasFootball(false);
                         // Throw the ball, instantiate football prefab and pass it the position and direction of the player
-                        GameObject newBall = (GameObject)Instantiate(Resources.Load("Football/Football"));
+                        GameObject newBall = (GameObject)Instantiate(Resources.Load("Football/" + equippedFootball));
                         newBall.GetComponent<FootballBehaviour>().Initialize(GetComponent<Rigidbody2D>().position, velocity);
                     }
                     else
@@ -160,6 +176,9 @@ public class Player : MonoBehaviour {
         }
         setAnimation(velocity);
         playerBody.velocity = velocity;
+        if (InputManager.FaceButtonTop()){
+            shopScreen.SetActive(true);
+        }
     }
 
 	/*

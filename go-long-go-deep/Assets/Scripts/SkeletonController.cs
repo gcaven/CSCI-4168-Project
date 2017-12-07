@@ -110,7 +110,9 @@ public class SkeletonController : MonoBehaviour {
 			&& other.gameObject.tag == "Football" 
 			&& other.gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero
 		) {
-			registerHit ();
+            FootballBehaviour equipped = (FootballBehaviour)other.gameObject.GetComponent(typeof(FootballBehaviour));
+
+            registerHit (equipped.damage);
 		}
 	}
 		
@@ -187,11 +189,11 @@ public class SkeletonController : MonoBehaviour {
 	 * else, play the taking damange animation and start a cooldown
 	 * to delay any further actions.
 	 */
-	void registerHit() {
+	void registerHit(float damage) {
 		gettingHit = true;
 //		Debug.Log ("Hit " + Time.fixedTime);
 		skeleBody.velocity = Vector2.zero;
-		hitPoints -= 1;
+		hitPoints -= damage;
 		if (hitPoints <= 0) {
 			animator.SetTrigger ("isDying");
 			skeleBody.isKinematic = true;
