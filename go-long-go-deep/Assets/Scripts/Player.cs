@@ -176,8 +176,10 @@ public class Player : MonoBehaviour {
         }
         setAnimation(velocity);
         playerBody.velocity = velocity;
+		// Player opens the shop screen
         if (InputManager.FaceButtonTop()){
             shopScreen.SetActive(true);
+			Time.timeScale = 0f;
         }
     }
 

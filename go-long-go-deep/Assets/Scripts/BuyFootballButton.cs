@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Change player football and subtract gold
 public class BuyFootballButton : MonoBehaviour {
-
     public int cost;
     public string footballType;
     public void PressButton() {

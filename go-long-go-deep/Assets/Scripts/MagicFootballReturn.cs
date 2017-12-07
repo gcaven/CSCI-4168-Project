@@ -6,12 +6,12 @@ public class MagicFootballReturn : MonoBehaviour {
 
     private float returnTimer;
 
-    // Use this for initialization
+    // Set how long it takes the football to return
     void Start () {
         returnTimer = 5;
 	}
-	
-	// Update is called once per frame
+
+	// Check if time has elapsed, if so, return football
 	void Update () {
         returnTimer -= Time.deltaTime;
         if(returnTimer <= 0){
