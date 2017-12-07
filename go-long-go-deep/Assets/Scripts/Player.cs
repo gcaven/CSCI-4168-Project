@@ -20,11 +20,13 @@ public class Player : MonoBehaviour {
 	private float timeLeftOnSpeedBurst;
 	private float actionCooldown;
 	private Vector2 previousMovement;
+    public int gold;
 	// public vars for behaviour
     public float movementSpeed;
 	// public references to interface componenets modified
 	// by this script.
 	public Text healthText;
+    public Text goldText;
 	public GameObject gameOverScreen;
     public GameObject shopScreen;
 
@@ -61,6 +63,7 @@ public class Player : MonoBehaviour {
 		speedBurstMultiplier = 2f;
 //		footballAutoReturn = false;
 		healthText.text = currentHP + "/" + totalHP + " <3";
+        goldText.text = System.Convert.ToString(gold);
         gameOverScreen.SetActive(false);
         shopScreen.SetActive(false);
     }
